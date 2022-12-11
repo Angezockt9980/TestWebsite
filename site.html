@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Website</title>
+  </head>
+  <body>
+    <h1>Welcome to my website!</h1>
+    <button id="my-button">Send message to Discord</button>
+
+    <script>
+      const Discord = require('discord.js');
+      const client = new Discord.Client();
+
+      // Replace with your bot's token
+      const botToken = 'ODMxODI2NjY5NDc5MTMzMTk1.GE5JU3.iF_3kPXJzHc7JwYly1LisxcDp6bD2OYHfHIqIQ';
+
+      // Replace with the ID of the channel you want your bot to send a message to
+      const channelId = '739018192793501736';
+
+      client.on('ready', () => {
+        console.log(`Logged in as ${client.user.tag}!`);
+      });
+
+      client.login(botToken);
+
+      // This function sends a message to the specified channel
+      function sendMessage(message) {
+        const channel = client.channels.get(channelId);
+        if (channel) {
+          channel.send(message);
+        }
+      }
+
+      // Add a click event listener to the button on your website
+      const button = document.querySelector('#my-button');
+      button.addEventListener('click', () => {
+        sendMessage('Hello from my website!');
+      });
+    </script>
+  </body>
+</html>
