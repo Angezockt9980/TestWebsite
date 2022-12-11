@@ -12,16 +12,18 @@
     <!-- Add the JavaScript code to handle the button click event -->
     <script>
       // Replace with the URL of your server
-      const serverUrl = 'http://localhost:9980';
+      const serverUrl = 'http://localhost:3000';
 
       // Get a reference to the button on your website
       const button = document.querySelector('#send-message-button');
 
       // Add an event listener to the button that sends a request to the server when clicked
       button.addEventListener('click', () => {
+        // Send a POST request to the server with a 1 second timeout
         fetch(serverUrl, {
           method: 'POST',
           body: 'send-message',
+          timeout: 1000,
         });
       });
     </script>
