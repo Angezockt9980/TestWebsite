@@ -1,27 +1,31 @@
-<!-- The HTML for your website goes here -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Website</title>
+  </head>
+  <body>
+    <h1>My Website</h1>
 
-<!-- Add a button to your website -->
-<button id="send-message-button">Send message to server</button>
+    <!-- Add the button to your website -->
+    <button id="send-message-button">Send Message</button>
 
-<!-- Add a script to your website to handle the button click -->
-<script>
-  // Get a reference to the send message button
-  const sendMessageButton = document.getElementById('send-message-button');
+    <!-- Add the JavaScript code to handle the button click event -->
+    <script>
+      // Replace with the URL of your server
+      const serverUrl = 'http://localhost:9980/';
 
-  // Add an event listener to the button to handle the click event
-  sendMessageButton.addEventListener('click', () => {
-    // Create a new WebSocket connection to your server
-    const ws = new WebSocket('ws://your-server-domain.com:80');
+      // Get a reference to the button on your website
+      const button = document.querySelector('#send-message-button');
 
-    // When the WebSocket is open, send a message to the server
-    ws.onopen = () => {
-      // Send a message to the server using the send method
-      ws.send('Hello from my website!');
-    };
-
-    // When the WebSocket is closed, log a message to the console
-    ws.onclose = () => {
-      console.log('WebSocket connection closed');
-    };
-  });
-</script>
+      // Add an event listener to the button that sends a request to the server when clicked
+      button.addEventListener('click', () => {
+        // Send a POST request to the server with a 1 second timeout
+        fetch(serverUrl, {
+          method: 'POST',
+          body: 'send-message',
+          timeout: 1000,
+        });
+      });
+    </script>
+  </body>
+</html>
