@@ -19,3 +19,6 @@ while (!feof($file)) {
 }
 
 // If the end of the file is reached without finding a match, the login is unsuccessful.
+echo 'Incorrect username or password.';
+
+fclose($file);
